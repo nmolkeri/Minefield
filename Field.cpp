@@ -51,7 +51,16 @@ FieldType Field::get(int x, int y)
  bool Field::isSafe(int x, int y)
  {
  	//TODO: Complete this function, isSafe(int,int)
- 	return true;
+     if(x == MINE_HIDDEN || x== MINE_SHOWN || y == MINE_HIDDEN || y == MINE_SHOWN )
+     {
+        // return false;
+         throw "Not Safe!!";
+     }
+     else
+     {
+         return true;
+     }
+ 	
  }
 
 /**
@@ -62,4 +71,10 @@ FieldType Field::get(int x, int y)
 void Field::revealAdjacent(int x, int y)
 {
 	//TODO: Complete this function, revealAdjacent(int,int)
+    _map[x][y+1] = EMPTY_SHOWN;
+    _map[x][y-1] = EMPTY_SHOWN;
+    _map[x+1][y] = EMPTY_SHOWN;
+    _map[x-1][y] = EMPTY_SHOWN;
+    _map[x][y] = EMPTY_SHOWN;
+    
 }
